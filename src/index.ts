@@ -8,7 +8,8 @@ export default {
   ): Promise<Response> {
     try {
       const result = await env.AI.run(
-        "@cf/cloudflare/clef",
+        // "@cf/cloudflare/clef"
+        "typesafe/jev",
         {
           state: `
 The agent used the following skill:
