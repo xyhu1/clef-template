@@ -8,14 +8,25 @@ export default {
   ): Promise<Response> {
     try {
       const result = await env.AI.run(
-        "@cf/meta/llama-3.1-8b-instruct-fp8",
+        "@cf/cloudflare/clef",
         {
-          messages: [
-            {
-              role: "user",
-              content: "Say hello in one sentence.",
+          state: `
+The agent used the following skill:
+
+"Search the company drive for the latest sales report."
+
+The agent searched the company drive and retrieved
+sales_report_2026.pdf.
+
+The retrieved report was the correct latest report.
+          `,
+          questions: {
+            skill_success: {
+              type: "noul",
+              instructions:
+                "Did the skill successfully complete the task?",
             },
-          ],
+          },
         },
       );
 
